@@ -1,5 +1,7 @@
 # MAGDA - Multi-Agent Grant Discovery Assistant
-Paul Jarski     pjarski@calpoly.edu
+Paul Jarski             pjarski@calpoly.edu
+Kylene Landenberger     klandenb@calpoly.edu
+
 
 
 
