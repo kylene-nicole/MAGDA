@@ -41,15 +41,21 @@ def scrape_with_playwright(urls, schema):
 
     # Grab the first 1000 tokens of the site
     splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-        chunk_size=1000, chunk_overlap=0
+        chunk_size=2000, chunk_overlap=0
     )
     splits = splitter.split_documents(docs_transformed)
     if not splits:
         logger.error("No content was split. Please check the input content.")
         return None
     
-    extracted_content = extract(schema=schema, content=splits[0].page_content)
-    pprint.pprint(extracted_content)
+    # extracted_content = extract(schema=schema, content=splits[0].page_content)
+    # pprint.pprint(extracted_content)
+    extracted_contents = []
+    for split in splits:
+        extracted_content = extract(schema=schema, content=split.page_content)
+        if extracted_content:
+            extracted_contents.append(extracted_content)
+    # pprint.pprint(extracted_content)
     return extracted_content
 
 
