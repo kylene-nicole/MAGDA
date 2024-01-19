@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613", openai_api_key=os.getenv("OPENAI_API_KEY"))
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613")
 
 schema = {
     "properties": {
@@ -48,13 +48,13 @@ def scrape_with_playwright(urls, schema):
         logger.error("No content was split. Please check the input content.")
         return None
     
-    # extracted_content = extract(schema=schema, content=splits[0].page_content)
+    extracted_content = extract(schema=schema, content=splits[0].page_content)
     # pprint.pprint(extracted_content)
-    extracted_contents = []
-    for split in splits:
-        extracted_content = extract(schema=schema, content=split.page_content)
-        if extracted_content:
-            extracted_contents.append(extracted_content)
+    # extracted_contents = []
+    # for split in splits:
+    #     extracted_content = extract(schema=schema, content=split.page_content)
+    #     if extracted_content:
+    #         extracted_contents.append(extracted_content)
     # pprint.pprint(extracted_content)
     return extracted_content
 
