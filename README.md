@@ -1,1 +1,1 @@
-# CSC580
+# MAGDA - Multi-Agent Grand Discovery Assistant
