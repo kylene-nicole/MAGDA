@@ -1,1 +1,1 @@
-# MAGDA - Multi-Agent Grand Discovery Assistant
+# MAGDA - Multi-Agent Grant Discovery Assistant
