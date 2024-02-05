@@ -90,7 +90,7 @@ class MagdaCLI:
         if self.example_data:
             selected_projects = questionary.checkbox(
                 "Select projects to use:",
-                choices=self.example_data
+                choices=[row[0] for row in self.example_data[1:]]
             ).ask()
             print("You selected:")
             for project in selected_projects:
