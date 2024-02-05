@@ -76,9 +76,10 @@ class MagdaCLI:
             print("Finding grants...")
             # save as JSON and CSV here
             self.example_data = [
-                ["Project Name", "Description", "URL"],
-                ["Project1", "An example project.", "https://example.com/project1"],
-                ["Project2", "Another example project.", "https://example.com/project2"]
+                ["Project Name", "Good Fit", "Description", "URL"],
+                ["Project1", "95%", "An example project.", "https://example.com/project1"],
+                ["Project2", "91%", "Another example project.", "https://example.com/project2"],
+                ["Project3", "87%", "Another example project.", "https://example.com/project3"]
             ]
             # create CSV in the project directory in MAGDA
             self.display_table()
@@ -108,8 +109,17 @@ class MagdaCLI:
             print(filename)
 
     def invoke_drafting_agents(self):
+        # print(self.selected_grant_opportunities)
         # create a new file in the project directory for each selected grant opportunity
-        pass
+
+        if self.selected_grant_opportunities:
+            for project in self.selected_grant_opportunities:
+                print(f"Creating a new file for {project}...")
+                # create a new file in the project directory
+                with open(os.path.join(self.magda_path, self.project, f'{project}.txt'), 'w') as f:
+                    f.write(f'Project: {project}\n\nDescription: An example project.\n\nURL: https://example.com/{project}')
+        else:
+            print("No grant opportunities selected.")
 
 
 if __name__ == "__main__":
